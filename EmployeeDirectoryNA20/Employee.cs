@@ -4,19 +4,22 @@ namespace EmployeeDirectoryNA20
 {
     public class Employee
     {
-        public Employee()
-        {
 
-        }
-       // public string Name;
+        //public string Name;
+
+        //Publikt fält ( Use property! )
         public int Salary;
+
+        //Property
+        //prop shortcut
         public string Name { get; set; }
 
-        public SalaryLevel SalaryLevel 
+        //Property only get
+        public SalaryLevel SalaryLevel
         {
             get
             {
-                if(Salary < 15000)
+                if (Salary < 15000)
                 {
                     return SalaryLevel.Junior;
                 }
@@ -27,11 +30,12 @@ namespace EmployeeDirectoryNA20
             }
         }
 
-        //public string Work(int houers)
-        //{
-        //    return "Working";
-        //}
+        //Same as above
+        // public SalaryLevel SalaryLevel => Salary < 15000 ? 
+        //SalaryLevel.Junior : 
+        //SalaryLevel.Senior;
 
+        //propfull shortcut
         //private string name;
 
         //public string Name
@@ -50,17 +54,21 @@ namespace EmployeeDirectoryNA20
         //    return name;
         //}
 
-
+        //Default constructor
         //public Employee()
         //{
 
         //}
+
+        //Constructor requires name and salary, removes the empty constructor
+        //ctor shortcut
         public Employee(string name, int salary)
         {
             Name = name;
             Salary = salary;
         }
 
+        //This method runs when you call ToString() on a employee instance
         public override string ToString()
         {
             return $"Name: {Name} Salary: {Salary}";

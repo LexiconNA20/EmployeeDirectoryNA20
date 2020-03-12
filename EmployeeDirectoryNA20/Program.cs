@@ -2,68 +2,59 @@
 
 namespace EmployeeDirectoryNA20
 {
+    //Entry point of application
     class Program
     {
         static void Main(string[] args)
         {
+            //Create a new instance of payroll
             Payroll payroll = new Payroll();
+
+            //Calls Add method on payroll instance with parameters
+            //Only for demo purpose to have some data
             AddSeedData(payroll);
 
             Console.WriteLine("Enter a new employee, Quit with Q");
 
+            //loop until we press Q
             do
             {
                 string name = Util.AskForString("Name: ");
-                if (name == "Q") break;
+                if (name == "Q") break;       //Break exits the loop
                 int salary = Util.AskForInt("Salary: ");
                 payroll.Add(name, salary);
 
-            } while (true);
+            } while (true); //Endleess loop
 
             Employee[] employees = payroll.GetEmployees();
 
-            Console.WriteLine(employees[0].Name);
-            employees[0] = null;
-
-            Employee[] emp2 = payroll.GetEmployees();
-            Console.WriteLine(emp2[0].Name);
-
+            //loop on all employees in payroll
             foreach (var employee in employees)
             {
-               // Console.WriteLine($"Name: {employee.Name} Salary: {employee.Salary}");
+                // Console.WriteLine($"Name: {employee.Name} Salary: {employee.Salary}");
+                // string fname = employee?.Name;
+
+                //Console.Writeline() method does a .ToString() on the Employee instance
                 Console.WriteLine(employee);
-
-                string fname = employee?.Name;
-
-                //if(employee.Salary > 15000)
-                //{
-                //    Console.WriteLine(DoSeniorWork());
-                //}
-                //else
-                //{
-                //    Console.WriteLine(DoJuniorWork());
-                //} 
-                if(employee == null)
-                {
-                    //Bla bla ha
-                }
 
                 //string value = null;
 
                 //value = value != null ? value : "no value";
                 //value = value ?? "no value";
 
-               
-                
-                if(employee.SalaryLevel.Equals(SalaryLevel.Senior))
+
+                //Three different ways...
+                //1.
+                if (employee.SalaryLevel.Equals(SalaryLevel.Senior))
                 {
                     Console.WriteLine(DoSeniorWork());
                 }
-                if(employee.SalaryLevel.Equals(SalaryLevel.Junior))
+                if (employee.SalaryLevel.Equals(SalaryLevel.Junior))
                 {
                     Console.WriteLine(DoJuniorWork());
                 }
 
+                //2.
                 switch (employee.SalaryLevel)
                 {
                     case SalaryLevel.Junior:
@@ -74,25 +65,16 @@ namespace EmployeeDirectoryNA20
                         break;
                 }
 
+                //3.
                 Console.WriteLine(
                     employee.SalaryLevel.Equals(SalaryLevel.Junior) ?
                     DoJuniorWork() :
                     DoSeniorWork());
 
-
-                    
             }
 
-
-            //Employee Kalle = new Employee("Kalle", 100);
-            //Employee Lisa = new Employee("Lisa", 200);
-
-            //string name = Kalle.Name;
-            //Kalle.Name = "Nisse";
-            //string jobb = Kalle.Work(2);
-
-            Employee person = new Employee() { Name = "Kalle", Salary = 2000 };
-
+            //Objekt instansierare
+            // Employee person = new Employee() { Name = "Kalle", Salary = 2000 };
 
         }
 
